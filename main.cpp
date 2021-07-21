@@ -1,24 +1,16 @@
 #include <wx/wx.h>
 #include <iostream>
+#include "Orologio.h"
+#include "Timer.h"
+
 using namespace std;
-class Simple : public wxFrame{
-public:
-    Simple(const wxString& title)
-            : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize( 250, 150))
 
-    {
-        Centre();
-    }
-};
+int main(){
 
-class MyApp : public wxApp{
-    bool OnInit(){
-        cout<<"Hello World";
-        Simple *simple = new Simple(wxT("simple"));
-        simple->Show(true);
-        return true;
-    }
-};
+    Orologio* clock= new Orologio();
+    //clock->startOrologio();
 
-
-wxIMPLEMENT_APP(MyApp);
+    Timer* timer= new Timer(0,1,2);
+    timer->startTimer();
+    return 0;
+}

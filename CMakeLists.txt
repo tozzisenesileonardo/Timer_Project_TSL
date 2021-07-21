@@ -8,7 +8,7 @@ set(wxWidgets_CONFIGURATION mswu)
 find_package(wxWidgets COMPONENTS core base REQUIRED)
 include(${wxWidgets_USE_FILE})
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp Orologio.h Orologio.cpp Timer.cpp Timer.h)
 add_executable(Timer ${SOURCE_FILES})
 
 target_link_libraries(Timer ${wxWidgets_LIBRARIES})
