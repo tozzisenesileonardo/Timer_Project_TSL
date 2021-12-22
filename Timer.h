@@ -5,30 +5,13 @@
 #ifndef TIMER_PROJECT_TSL_TIMER_H
 #define TIMER_PROJECT_TSL_TIMER_H
 
+#include<wx/wx.h>
 
-class Timer {
-private:
-    int ore;
-    int minuti;
-    int sec;
-
-    void display();
+class Timer: public wxPanel{
 public:
-    int getOre() const;
+    Timer(wxWindow* parent);
+    virtual ~Timer();
 
-    void setOre(int ore);
-
-    int getMinuti() const;
-
-    void setMinuti(int minuti);
-
-    int getSec() const;
-
-    void setSec(int sec);
-
-    Timer( int h, int m, int s);
-    ~Timer();
-    void startTimer();
 };
 
 

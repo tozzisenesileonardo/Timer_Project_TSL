@@ -7,6 +7,14 @@
 #include <thread>
 
 Timer::Timer(int h, int m, int s) {
+    while(s>=60){
+        m=m+1;
+        s=s-60;
+    }
+    while(m>=60){
+        h=h+1;
+        m=m-60;
+    }
     ore=h;
     minuti=m;
     sec=s;

@@ -7,7 +7,7 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
-
+#include<wx/wx.h>
 int Orologio::getOre() const {
     return ore;
 }
@@ -77,4 +77,8 @@ void Orologio::startOrologio() {
 void Orologio::display() {
     std::cout<< "Anno: "<< anno<< " Mese: "<< mese << " Giorno: "<< giorno <<std::endl;
     std::cout<< "Ore: "<< ore<< " Minuti: "<< minuti << " Secondi: "<< sec <<std::endl;
+}
+
+Orologio::Orologio(wxWindow *parent):wxPanel(parent, wxID_ANY,wxDefaultPosition, wxDefaultSize){
+
 }
