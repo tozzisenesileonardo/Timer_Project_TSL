@@ -9,7 +9,7 @@
 
 class CronoType {
 public:
-    CronoType(wxEvtHandler* parent);
+    CronoType(wxEvtHandler* p);
 
     virtual ~CronoType();
     void start();

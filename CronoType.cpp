@@ -4,8 +4,8 @@
 
 #include "CronoType.h"
 
-CronoType::CronoType(wxEvtHandler* parent) {
-    timerNuovo= new wxTimer(parent, 14);
+CronoType::CronoType(wxEvtHandler* p) {
+    timerNuovo= new wxTimer(p, 14);
 }
 
 CronoType::~CronoType() {
