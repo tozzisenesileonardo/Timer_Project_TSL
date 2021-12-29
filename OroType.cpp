@@ -15,7 +15,7 @@ OroType::~OroType() {
 }
 
 std::string OroType::stampa(int i) {
-    if(i>1 || i<0)
+    if(i>2 || i<0)
         return type[0];
     return type[i];
 }
@@ -23,26 +23,54 @@ std::string OroType::stampa(int i) {
 void OroType::creaD() {
     std::string orario;
     std::string data_gma;
+    std::string ap_orario;
+
 
     data_gma=std::to_string(giorno)+"-"+std::to_string(mese)+"-"+std::to_string(anno);
     std::string h=std::to_string(ore);
     std::string m=std::to_string(minuti);
     std::string s=std::to_string(secondi);
-    if(ore>10)
+
+    if(ore>=10)
         orario=ore+":";
     else
         orario="0"+h+":";
-    if(minuti>10)
+    if(minuti>=10)
         orario=minuti+":";
     else
         orario="0"+m+":";
-    if(secondi>10)
+    if(secondi>=10)
         orario=secondi+":";
     else
         orario="0"+s;
 
+    if(ore>12){
+        ap_orario="pm ";
+        if(ore-12<10)
+            ap_orario=ap_orario+"0"+std::to_string(ore-12);
+        else
+            ap_orario=ap_orario+std::to_string(ore-12);
+    }
+    else{
+        ap_orario="am ";
+        if(ore<10)
+            ap_orario=ap_orario+"0"+std::to_string(ore);
+        else
+            ap_orario=ap_orario+std::to_string(ore);
+    }
+    ap_orario=ap_orario+":";
+    if(minuti>=10)
+        ap_orario=ap_orario+m+":";
+    else
+        ap_orario=ap_orario+"0"+m+":";
+    if(secondi>=10)
+        ap_orario=ap_orario+s;
+    else
+        ap_orario=ap_orario+"0"+s;
+
     type[0]=data_gma;
     type[1]=orario;
+    type[2]=ap_orario;
 }
 
 void OroType::creaT() {

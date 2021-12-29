@@ -17,7 +17,7 @@ wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
 wxEND_EVENT_TABLE()
 
 MainFrame::MainFrame():wxFrame(NULL, wxID_ANY, "Orologio", wxDefaultPosition, wxSize(330,250)){
-
+    pannelloCorrente=new Orologio(this);
 }
 
 MainFrame::~MainFrame() {
