@@ -16,7 +16,7 @@ public:
     void stop();
     void calcolaT();
     void tempo();
-    bool spento();
+    bool spento() const;
     void azzera();
     const std::string &getT() const;
 private:

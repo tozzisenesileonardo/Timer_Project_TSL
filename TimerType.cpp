@@ -57,15 +57,15 @@ void TimerType::tempo() {
     std::string h=std::to_string(Orimanenti);
     std::string m=std::to_string(Mrimanenti);
     std::string s=std::to_string(Srimanenti);
-    if(Orimanenti>10)
+    if(Orimanenti>=10)
         time=Orimanenti+":";
     else
         time="0"+h+":";
-    if(Mrimanenti>10)
+    if(Mrimanenti>=10)
         time=Mrimanenti+":";
     else
         time="0"+m+":";
-    if(Srimanenti>10)
+    if(Srimanenti>=10)
         time=Srimanenti+":";
     else
         time="0"+s+":";

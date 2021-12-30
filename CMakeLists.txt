@@ -8,7 +8,7 @@ set(wxWidgets_CONFIGURATION mswu)
 find_package(wxWidgets COMPONENTS core base REQUIRED)
 include(${wxWidgets_USE_FILE})
 
-set(SOURCE_FILES main.cpp Orologio.h Orologio.cpp Timer.cpp Timer.h Applicazione.cpp Applicazione.h Cronometro.cpp Cronometro.h MainFrame.cpp MainFrame.h CronoType.cpp CronoType.h OroType.cpp OroType.h TimerType.cpp TimerType.h)
+set(SOURCE_FILES main.cpp Applicazione.cpp Applicazione.h Cronometro.cpp Cronometro.h MainFrame.cpp MainFrame.h CronoType.cpp CronoType.h OroType.cpp OroType.h TimerType.cpp TimerType.h Orologio.cpp Orologio.h Timer.cpp Timer.h)
 add_executable(Timer ${SOURCE_FILES})
 
 target_link_libraries(Timer ${wxWidgets_LIBRARIES})

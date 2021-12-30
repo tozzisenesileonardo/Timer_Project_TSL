@@ -28,19 +28,19 @@ void CronoType::tempo() {
     std::string m=std::to_string(min);
     std::string s=std::to_string(sec);
     std::string c=std::to_string(cent);
-    if(ore>10)
+    if(ore>=10)
         time=ore+":";
     else
         time="0"+h+":";
-    if(min>10)
+    if(min>=10)
         time=min+":";
     else
         time="0"+m+":";
-    if(sec>10)
+    if(sec>=10)
         time=sec+":";
     else
         time="0"+s+":";
-    if(cent>10)
+    if(cent>=10)
         time=cent;
     else
         time="0"+c+":";
@@ -48,12 +48,27 @@ void CronoType::tempo() {
 }
 
 void CronoType::calcolaT() {
-    if(cent==99)
-        sec++;
-    if(sec==59)
-        min++;
-    if(min=59)
+    if(min==59 && sec==59 && cent==99){
         ore++;
+        sec=0;
+        min=0;
+        cent=0;
+    }
+    else{
+        if(sec==59 && cent==99){
+            min++;
+            sec=0;
+            cent=0;
+        }
+        else{
+            if(cent==99){
+                sec++;
+                cent=0;
+            } else{
+                cent++;
+            }
+        }
+    }
 }
 
 void CronoType::azzera() {
@@ -72,6 +87,6 @@ const std::string &CronoType::getT() const {
     return t;
 }
 
-bool CronoType::spento() {
+bool CronoType::spento() const{
     return fermo;
 }

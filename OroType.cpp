@@ -16,15 +16,14 @@ OroType::~OroType() {
 
 std::string OroType::stampa(int i) {
     if(i>2 || i<0)
-        return type[0];
-    return type[i];
+        return typeDate[0];
+    return typeDate[i];
 }
 
 void OroType::creaD() {
     std::string orario;
     std::string data_gma;
     std::string ap_orario;
-
 
     data_gma=std::to_string(giorno)+"-"+std::to_string(mese)+"-"+std::to_string(anno);
     std::string h=std::to_string(ore);
@@ -44,7 +43,7 @@ void OroType::creaD() {
     else
         orario="0"+s;
 
-    if(ore>12){
+    if(ore>=12){
         ap_orario="pm ";
         if(ore-12<10)
             ap_orario=ap_orario+"0"+std::to_string(ore-12);
@@ -68,9 +67,9 @@ void OroType::creaD() {
     else
         ap_orario=ap_orario+"0"+s;
 
-    type[0]=data_gma;
-    type[1]=orario;
-    type[2]=ap_orario;
+    typeDate[0]=data_gma;
+    typeDate[1]=orario;
+    typeDate[2]=ap_orario;
 }
 
 void OroType::creaT() {

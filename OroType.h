@@ -31,7 +31,7 @@ private:
     int giorno;
     int mese;
     int anno;
-    std::string type[3];
+    std::string typeDate[3];
     wxTimer* timerNuovo=nullptr;
 };
 

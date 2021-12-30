@@ -1,84 +1,64 @@
 //
-// Created by leonardo on 21/07/21.
+// Created by leonardo on 29/12/21.
 //
 
 #include "Orologio.h"
-#include <iostream>
 #include <ctime>
-#include <thread>
-#include <chrono>
-#include<wx/wx.h>
-int Orologio::getOre() const {
-    return ore;
+
+wxBEGIN_EVENT_TABLE(Orologio, wxPanel)
+EVT_TIMER(4, Orologio::timerOn)
+wxEND_EVENT_TABLE()
+
+Orologio::Orologio(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize) {
+    mainS=new wxBoxSizer(wxVERTICAL);
+    sceltaS=new wxBoxSizer(wxHORIZONTAL);
+
+    wxFont font=wxFont(15, wxFONTFAMILY_ROMAN, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_NORMAL);
+
+    blocco=new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
+    blocco->SetFont(font);
+    ap_blocco=new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
+    ap_blocco->SetFont(font);
+    data_blocco=new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
+    data_blocco->SetFont(font);
+
+    orologioB=new wxButton(this,1,"Orologio");
+    orologioB->SetFont(font);
+    orologioB->Enable(false);
+
+    timerB=new wxButton(this, 2, "Timer");
+    timerB->SetFont(font);
+
+    cronoB=new wxButton(this, 3, "Cronometro");
+    cronoB->SetFont(font);
+
+    sceltaS->Add(orologioB, 0, wxEXPAND| wxALL, 5);
+    sceltaS->Add(timerB, 0, wxEXPAND| wxALL, 5);
+    sceltaS->Add(cronoB, 0, wxEXPAND| wxALL, 5);
+
+    mainS->Add(sceltaS,0,wxALIGN_CENTER|wxALL,0);
+    mainS->Add(blocco,1,wxALIGN_CENTER|wxALL,5);
+    mainS->Add(ap_blocco,1,wxALIGN_CENTER|wxALL,5);
+    mainS->Add(data_blocco,1,wxALIGN_CENTER|wxALL,5);
+
+    SetSizerAndFit(mainS);
+    SetAutoLayout(true);
+
+    type=new OroType(this);
 }
 
-void Orologio::setOre(int ore) {
-    Orologio::ore = ore;
+Orologio::~Orologio() {
+    delete type;
 }
 
-int Orologio::getMinuti() const {
-    return minuti;
+void Orologio::timerOn(wxTimerEvent &) {
+    type->creaT();
+    type->creaD();
+    blocco->SetValue(type->stampa(0));
+    ap_blocco->SetValue(type->stampa(1));
+    data_blocco->SetValue(type->stampa(2));
 }
 
-void Orologio::setMinuti(int minuti) {
-    Orologio::minuti = minuti;
-}
-
-int Orologio::getSec() const {
-    return sec;
-}
-
-void Orologio::setSec(int sec) {
-    Orologio::sec = sec;
-}
-
-int Orologio::getGiorno() const {
-    return giorno;
-}
-
-void Orologio::setGiorno(int giorno) {
-    Orologio::giorno = giorno;
-}
-
-int Orologio::getMese() const {
-    return mese;
-}
-
-void Orologio::setMese(int mese) {
-    Orologio::mese = mese;
-}
-
-int Orologio::getAnno() const {
-    return anno;
-}
-
-void Orologio::setAnno(int anno) {
-    Orologio::anno = anno;
-}
-
-void Orologio::oraCorrente() {
-    std::time_t tempo= std::time(0);    //metto in tempo il tempo attuale
-    std::tm* now = std::localtime(&tempo);
-    ore=now->tm_hour;
-    minuti=now->tm_min;
-    sec=now->tm_sec;
-    giorno=now->tm_mday;
-    mese=(now->tm_mon)+1;
-    anno=(now->tm_year)+1900;
-}
-void Orologio::startOrologio() {
-    while(true){
-        oraCorrente(); //imposta l'ora
-        display();
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //il thread orologio dorme per un secondo
-    }
-}
-
-void Orologio::display() {
-    std::cout<< "Anno: "<< anno<< " Mese: "<< mese << " Giorno: "<< giorno <<std::endl;
-    std::cout<< "Ore: "<< ore<< " Minuti: "<< minuti << " Secondi: "<< sec <<std::endl;
-}
-
-Orologio::Orologio(wxWindow *parent):wxPanel(parent, wxID_ANY,wxDefaultPosition, wxDefaultSize){
-
+OroType *Orologio::getType() const {
+    return type;
 }

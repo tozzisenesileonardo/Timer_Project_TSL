@@ -13,7 +13,7 @@ public:
     Applicazione();
     ~Applicazione();
 
-    virtual bool OnInit();
+    bool OnInit();
 
 private:
     MainFrame* frame=nullptr;
