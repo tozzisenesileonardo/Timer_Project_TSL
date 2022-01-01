@@ -14,12 +14,6 @@ OroType::~OroType() {
     delete timerNuovo;
 }
 
-std::string OroType::stampa(int i) {
-    if(i>2 || i<0)
-        return typeDate[0];
-    return typeDate[i];
-}
-
 void OroType::creaD() {
     std::string orario;
     std::string data_gma;
@@ -31,17 +25,17 @@ void OroType::creaD() {
     std::string s=std::to_string(secondi);
 
     if(ore>=10)
-        orario=ore+":";
+        orario=orario+h+":";
     else
         orario="0"+h+":";
     if(minuti>=10)
-        orario=minuti+":";
+        orario=orario+m+":";
     else
-        orario="0"+m+":";
+        orario=orario+"0"+m+":";
     if(secondi>=10)
-        orario=secondi+":";
+        orario=orario+s;
     else
-        orario="0"+s;
+        orario=orario+"0"+s;
 
     if(ore>=12){
         ap_orario="pm ";
@@ -70,6 +64,13 @@ void OroType::creaD() {
     typeDate[0]=data_gma;
     typeDate[1]=orario;
     typeDate[2]=ap_orario;
+}
+
+
+std::string OroType::stampa(int i) {
+    if(i>2 || i<0)
+        return typeDate[0];
+    return typeDate[i];
 }
 
 void OroType::creaT() {

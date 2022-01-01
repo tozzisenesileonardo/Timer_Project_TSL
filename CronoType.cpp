@@ -29,21 +29,21 @@ void CronoType::tempo() {
     std::string s=std::to_string(sec);
     std::string c=std::to_string(cent);
     if(ore>=10)
-        time=ore+":";
+        time=time+h+":";
     else
-        time="0"+h+":";
+        time=time+"0"+h+":";
     if(min>=10)
-        time=min+":";
+        time=time+m+":";
     else
-        time="0"+m+":";
+        time=time+"0"+m+":";
     if(sec>=10)
-        time=sec+":";
+        time=time+s+",";
     else
-        time="0"+s+":";
+        time=time+"0"+s+",";
     if(cent>=10)
-        time=cent;
+        time=time+c;
     else
-        time="0"+c+":";
+        time=time+"0"+c;
     t=time;
 }
 

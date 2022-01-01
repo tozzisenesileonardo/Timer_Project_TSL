@@ -10,25 +10,27 @@ EVT_BUTTON(13, Cronometro::cronoAzz)
 EVT_TIMER(14, Cronometro::timerOn)
 wxEND_EVENT_TABLE()
 
-Cronometro::Cronometro(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize) {
+Cronometro::Cronometro(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(550,300)) {
     mainS=new wxBoxSizer(wxVERTICAL);
     sceltaS=new wxBoxSizer(wxHORIZONTAL);
     contS=new wxBoxSizer(wxHORIZONTAL);
 
-    wxFont font=wxFont(15, wxFONTFAMILY_ROMAN, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_NORMAL);
+    wxFont main_font=wxFont(20, wxFONTFAMILY_ROMAN, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_BOLD);
+    wxFont font=wxFont(17, wxFONTFAMILY_ROMAN, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_NORMAL);
 
     blocco=new wxTextCtrl(this, wxID_ANY,"00:00:00,00", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
-    blocco->SetFont(font);
+    blocco->SetFont(main_font);
 
     orologioB=new wxButton(this,10,"Orologio");
-    orologioB->SetFont(font);
+    orologioB->SetFont(main_font);
 
     timerB=new wxButton(this, 11, "Timer");
-    timerB->SetFont(font);
+    timerB->SetFont(main_font);
 
     cronoB=new wxButton(this, 12, "Cronometro");
-    cronoB->SetFont(font);
+    cronoB->SetFont(main_font);
     cronoB->Enable(false);
+    cronoB->SetBackgroundColour(*wxLIGHT_GREY);
 
     avvia=new wxButton(this, 12, "Avvia");
     avvia->SetFont(font);
@@ -43,9 +45,9 @@ Cronometro::Cronometro(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPos
     contS->Add(avvia,0,wxEXPAND|wxALL,5);
     contS->Add(azzera,0,wxEXPAND|wxALL,5);
 
-    mainS->Add(sceltaS,0,wxALIGN_CENTER|wxALL,0);
-    mainS->Add(contS,0,wxALIGN_CENTER|wxALL,0);
-    mainS->Add(blocco,1,wxALIGN_CENTER|wxALL,5);
+    mainS->Add(sceltaS,0,wxEXPAND|wxALL,0);
+    mainS->Add(contS,0,wxEXPAND|wxALL,0);
+    mainS->Add(blocco,1,wxEXPAND|wxALL,5);
 
     SetSizerAndFit(mainS);
     SetAutoLayout(true);
@@ -79,6 +81,7 @@ void Cronometro::cronoAzz(wxCommandEvent &){
     type->azzera();
     std::string t=type->getT();
     blocco->SetValue(t);
+    avvia->SetLabel("Avvia");
 }
 
 CronoType *Cronometro::getType() const {

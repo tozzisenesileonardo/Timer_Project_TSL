@@ -16,7 +16,7 @@ wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
     EVT_BUTTON(11,MainFrame::buildTimer)
 wxEND_EVENT_TABLE()
 
-MainFrame::MainFrame():wxFrame(NULL, wxID_ANY, "Orologio", wxDefaultPosition, wxSize(330,250)){
+MainFrame::MainFrame():wxFrame(NULL, wxID_ANY, "Orologio", wxDefaultPosition, wxSize(550,300)){
     pannelloCorrente=new Orologio(this);
 }
 
