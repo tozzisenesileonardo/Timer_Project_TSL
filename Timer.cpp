@@ -28,15 +28,15 @@ Timer::Timer(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPosition, wxS
     cronoB->SetFont(main_font);
 
     sizeIns=new wxBoxSizer(wxHORIZONTAL);
-    bloccoOre = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,60), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
+    bloccoOre = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,40), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
     bloccoOre ->SetFont(main_font);
-    bloccoSepA = new wxTextCtrl(this, wxID_ANY, ":", wxDefaultPosition, wxSize(35,60), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER | wxTE_READONLY | wxBORDER_NONE);
+    bloccoSepA = new wxTextCtrl(this, wxID_ANY, ":", wxDefaultPosition, wxSize(35,40), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER | wxTE_READONLY | wxBORDER_NONE);
     bloccoSepA ->SetFont(main_font);
-    bloccoMin = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,60), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
+    bloccoMin = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,40), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
     bloccoMin ->SetFont(main_font);
-    bloccoSepB = new wxTextCtrl(this, wxID_ANY, ":", wxDefaultPosition, wxSize(35,60), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER | wxTE_READONLY | wxBORDER_NONE);
+    bloccoSepB = new wxTextCtrl(this, wxID_ANY, ":", wxDefaultPosition, wxSize(35,40), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER | wxTE_READONLY | wxBORDER_NONE);
     bloccoSepB ->SetFont(main_font);
-    bloccoSec = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,60), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
+    bloccoSec = new wxTextCtrl(this, wxID_ANY, "00", wxDefaultPosition, wxSize(150,40), wxTE_MULTILINE | wxTE_RICH2 | wxTE_CENTER);
     bloccoSec ->SetFont(main_font);
 
 

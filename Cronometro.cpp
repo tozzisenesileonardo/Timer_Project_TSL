@@ -21,22 +21,24 @@ Cronometro::Cronometro(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPos
     blocco=new wxTextCtrl(this, wxID_ANY,"00:00:00,00", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
     blocco->SetFont(main_font);
 
-    orologioB=new wxButton(this,10,"Orologio");
+    orologioB=new wxButton(this,10,"Orologio", wxDefaultPosition,wxSize(168,50));
     orologioB->SetFont(main_font);
 
-    timerB=new wxButton(this, 11, "Timer");
+    timerB=new wxButton(this, 11, "Timer", wxDefaultPosition, wxSize(168,50));
     timerB->SetFont(main_font);
 
-    cronoB=new wxButton(this, 12, "Cronometro");
+    cronoB=new wxButton(this, 12, "Cronometro", wxDefaultPosition, wxSize(184,50));
     cronoB->SetFont(main_font);
     cronoB->Enable(false);
     cronoB->SetBackgroundColour(*wxLIGHT_GREY);
 
-    avvia=new wxButton(this, 12, "Avvia");
+    avvia=new wxButton(this, 12, "Avvia", wxDefaultPosition, wxSize(265,40));
     avvia->SetFont(font);
+    avvia->SetBackgroundColour(*wxGREEN);
 
-    azzera=new wxButton(this, 13, "Azzera");
+    azzera=new wxButton(this, 13, "Azzera", wxDefaultPosition, wxSize(265,40));
     azzera->SetFont(font);
+    azzera->SetBackgroundColour(*wxRED);
 
     sceltaS->Add(orologioB, 0, wxEXPAND| wxALL, 5);
     sceltaS->Add(timerB, 0, wxEXPAND| wxALL, 5);
@@ -70,10 +72,12 @@ void Cronometro::cronoOn(wxCommandEvent &){
     if(type->spento()){
         type->start();
         avvia->SetLabel("Ferma");
+        avvia->SetBackgroundColour(*wxYELLOW);
     }
     else{
         type->stop();
         avvia->SetLabel("Avvia");
+        avvia->SetBackgroundColour(*wxGREEN);
     }
 }
 
@@ -82,6 +86,7 @@ void Cronometro::cronoAzz(wxCommandEvent &){
     std::string t=type->getT();
     blocco->SetValue(t);
     avvia->SetLabel("Avvia");
+    avvia->SetBackgroundColour(*wxGREEN);
 }
 
 CronoType *Cronometro::getType() const {

@@ -25,15 +25,15 @@ Orologio::Orologio(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     data_blocco=new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE| wxTE_READONLY | wxTE_RICH2 | wxTE_CENTER | wxBORDER_NONE);
     data_blocco->SetFont(main_font);
 
-    orologioB=new wxButton(this,1,"Orologio");
+    orologioB=new wxButton(this,1,"Orologio", wxDefaultPosition,wxSize(168,50));
     orologioB->SetFont(main_font);
     orologioB->Enable(false);
     orologioB->SetBackgroundColour(*wxLIGHT_GREY);
 
-    timerB=new wxButton(this, 2, "Timer");
+    timerB=new wxButton(this, 2, "Timer", wxDefaultPosition, wxSize(168,50));
     timerB->SetFont(main_font);
 
-    cronoB=new wxButton(this, 3, "Cronometro");
+    cronoB=new wxButton(this, 3, "Cronometro", wxDefaultPosition, wxSize(184,50));
     cronoB->SetFont(main_font);
 
     sceltaS->Add(orologioB, 0, wxEXPAND| wxALL, 5);
