@@ -15,6 +15,7 @@ public:
     void creaD();
     void creaT();
     void setGiorno(int g);
+    void setGiornoW(int gw);
     void setMese(int me);
     void setAnno(int a);
     void setOra(int h);
@@ -29,6 +30,7 @@ private:
     int minuti;
     int secondi;
     int giorno;
+    int giornoW;
     int mese;
     int anno;
     std::string typeDate[3];
