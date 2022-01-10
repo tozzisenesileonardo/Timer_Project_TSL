@@ -103,16 +103,21 @@ void OroType::creaD() {
     else
         ap_orario=ap_orario+"0"+s;
 
-    typeDate[0]=data_gma;
-    typeDate[1]=orario;
-    typeDate[2]=ap_orario;
+    data=data_gma;
+    orario_classico=orario;
+    ampm_orario=ap_orario;
 }
 
 
 std::string OroType::stampa(int i) {
-    if(i>2 || i<0)
-        return typeDate[0];
-    return typeDate[i];
+    if(i==1)
+        return orario_classico;
+    else{
+        if(i==2)
+            return ampm_orario;
+        else
+            return data;
+    }
 }
 
 void OroType::creaT() {
@@ -127,34 +132,3 @@ void OroType::creaT() {
     anno=orarioCorr->tm_year+1900;
 }
 
-void OroType::setOra(int h) {
-    OroType::ore=h;
-}
-
-void OroType::setMin(int m) {
-    OroType::minuti=m;
-}
-
-void OroType::setSec(int s) {
-    OroType::secondi=s;
-}
-
-void OroType::setGiorno(int g) {
-    OroType::giorno=g;
-}
-
-void OroType::setGiornoW(int gw) {
-    OroType::giornoW=gw;
-}
-
-void OroType::setMese(int me) {
-    OroType::mese=me;
-}
-
-void OroType::setAnno(int a) {
-    OroType::anno=a;
-}
-
-wxTimer *OroType::getT() const {
-    return timerNuovo;
-}

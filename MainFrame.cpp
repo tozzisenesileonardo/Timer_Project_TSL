@@ -5,13 +5,13 @@
 #include "MainFrame.h"
 
 wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
-//Scelte possibili dall'orologio
+//Quando siamo nell'orologio
     EVT_BUTTON(2,MainFrame::buildTimer)
     EVT_BUTTON(3,MainFrame::buildCrono)
-//Scelte possibili dal Timer
+//Quando siamo nel Timer
     EVT_BUTTON(5,MainFrame::buildOrologio)
     EVT_BUTTON(7,MainFrame::buildCrono)
-//Scelte possibili dal cronometro
+//Quando siamo nel Cronometro
     EVT_BUTTON(10,MainFrame::buildOrologio)
     EVT_BUTTON(11,MainFrame::buildTimer)
 wxEND_EVENT_TABLE()

@@ -14,15 +14,8 @@ public:
 
     void creaD();
     void creaT();
-    void setGiorno(int g);
-    void setGiornoW(int gw);
-    void setMese(int me);
-    void setAnno(int a);
-    void setOra(int h);
-    void setMin(int m);
-    void setSec(int s);
+
     std::string stampa(int i);
-    wxTimer* getT() const;
 
 private:
     static const int intervallo=1000;
@@ -33,7 +26,9 @@ private:
     int giornoW;
     int mese;
     int anno;
-    std::string typeDate[3];
+    std::string data;
+    std::string ampm_orario;
+    std::string orario_classico;
     wxTimer* timerNuovo=nullptr;
 };
 
