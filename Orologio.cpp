@@ -56,12 +56,10 @@ Orologio::~Orologio() {
 }
 
 void Orologio::timerOn(wxTimerEvent &) {
-    type->creaT();
-    type->creaD();
-    //per stampare l'orario classico nel metodo stampa inserire 1, per l'orario in formato am/pm inserire 2, negli altri casi stampa la data
-    blocco->SetValue(type->stampa(1));
-    ap_blocco->SetValue(type->stampa(2));
-    data_blocco->SetValue(type->stampa(0));
+    type->adesso();
+    blocco->SetValue(type->toString(tipo::or_c));
+    ap_blocco->SetValue(type->toString(tipo::or_ap));
+    data_blocco->SetValue(type->toString(tipo::data));
 }
 
 OroType *Orologio::getType() const {
